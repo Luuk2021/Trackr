@@ -21,17 +21,21 @@ class CreateUser extends Component
 
     public function mount()
     {
-        $this->users = \App\Models\User::factory()->create();
+        $this->users = new User();
     }
 
     public function save()
     {
         $this->validate();
 
-        $passWord = Hash::make($this->users->password);
-        $this->users->password = $passWord;
+        $newUser = User::factory()->create([
+            'name' => $this->users->name,
+            'email' => $this->users->email,
+            'password' => Hash::make($this->users->password),
+            'role' => $this->users->role,
+        ]);
 
-        $this->users->save();
+        $newUser->save();
 
         return redirect()->to('/user');
     }
