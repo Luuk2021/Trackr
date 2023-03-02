@@ -30,6 +30,9 @@
             @endif
 
             <!-- Page Content -->
+                @if($errors->any())
+                    <script type='text/javascript'>alert('{{$errors->first()}}');</script>;
+                @endif
             <main>
                 {{ $slot }}
             </main>
