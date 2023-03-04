@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class CreateUser extends Component
 {
-    public User $users ;
+    public User $users;
 
     protected $rules = [
         'users.name' => 'required|string|min:1',

@@ -13,4 +13,9 @@ class ShowUsers extends Component
             'users' => User::all()
         ]);
     }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+    }
 }

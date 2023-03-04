@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\CreateUser;
+use App\Http\Livewire\EditUser;
 use App\Http\Livewire\ShowUsers;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('superadmin')->group(function () {
     Route::get('/user', ShowUsers::class);
     Route::get('/user/add', CreateUser::class);
+    Route::get('/user/edit/{user}', EditUser::class);
 });
 
 require __DIR__.'/auth.php';
