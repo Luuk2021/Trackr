@@ -22,7 +22,7 @@ class EditUser extends Component
                 Rule::unique('users', 'email')->ignore($this->users->id),
             ],
             'users.password' => 'string|min:5',
-            'users.role' => 'required|in:admin,packer',
+            'users.role' => 'required|in:admin,packer,superadmin',
         ];
     }
 

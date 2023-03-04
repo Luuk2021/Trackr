@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('superadmin')->group(function () {
-    Route::get('/user', ShowUsers::class);
+    Route::get('/user', ShowUsers::class)->name('user');
     Route::get('/user/add', CreateUser::class);
     Route::get('/user/edit/{user}', EditUser::class);
 });

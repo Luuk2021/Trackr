@@ -4,8 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Testing\Fluent\Concerns\Has;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class CreateUser extends Component
@@ -16,7 +14,7 @@ class CreateUser extends Component
         'users.name' => 'required|string|min:1',
         'users.email' => 'required|email|max:500|unique:users',
         'users.password' => 'required|string|min:5',
-        'users.role' => 'required|in:admin,packer',
+        'users.role' => 'required|in:admin,packer,superadmin',
     ];
 
     public function mount()
