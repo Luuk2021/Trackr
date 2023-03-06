@@ -1,4 +1,9 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+
+    <?php
+
+    use Illuminate\Support\Facades\Auth; ?>
+
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -16,7 +21,16 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <?php if (!is_null(Auth::user()) && Auth::user()->role == 'superadmin') : ?>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    </div>
+                <?php endif; ?>
             </div>
+
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -42,8 +56,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -88,8 +101,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

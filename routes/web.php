@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\CreateUser;
+use App\Http\Livewire\EditUser;
+use App\Http\Livewire\ShowUsers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->middleware(['auth', 'verified']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -26,6 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('superadmin')->group(function () {
+    Route::get('/user', ShowUsers::class)->name('user');
+    Route::get('/user/add', CreateUser::class);
+    Route::get('/user/edit/{user}', EditUser::class);
 });
 
 require __DIR__.'/auth.php';

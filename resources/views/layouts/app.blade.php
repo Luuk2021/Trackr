@@ -12,6 +12,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Livewire -->
+        @livewireStyles
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -27,9 +30,14 @@
             @endif
 
             <!-- Page Content -->
+                @if($errors->any())
+                    <script type='text/javascript'>alert('{{$errors->first()}}');</script>;
+                @endif
             <main>
                 {{ $slot }}
             </main>
         </div>
+        <!-- Livewire -->
+        @livewireScripts
     </body>
 </html>
