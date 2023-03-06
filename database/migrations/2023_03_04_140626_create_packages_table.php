@@ -16,6 +16,23 @@ return new class extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            /** ENUM */
+            $table->string('status');
+            /** end ENUM */
+
+            $table->foreignId('user_id')->constrained();
+            $table->string('pairing_code');
+
+            $table->string('email');
+            $table->string('firstName');
+            $table->string('lastName');
+            $table->string('streetname');
+            $table->string('house_number');
+            $table->string('zip_code');
+            $table->string('city');
+
+
         });
     }
 
