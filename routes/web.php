@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Package\ShowPackages;
 use App\Http\Livewire\Package\CreatePackage;
@@ -47,4 +48,6 @@ Route::middleware('packeroradmin')->group(function () {
     Route::get('/package', ShowPackages::class)->name('package');
 });
 
-require __DIR__ . '/auth.php';
+Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
+
+require __DIR__.'/auth.php';
