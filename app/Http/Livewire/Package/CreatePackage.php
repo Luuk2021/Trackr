@@ -9,6 +9,8 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
+use function PHPUnit\Framework\isNull;
+
 class CreatePackage extends Component
 {
     public Package $package;
@@ -20,6 +22,36 @@ class CreatePackage extends Component
                 'required',
                 'email',
                 'max:500',
+            ],
+            'package.firstname' => [
+                'required',
+                'string',
+                'min:1',
+            ],
+            'package.lastname' => [
+                'required',
+                'string',
+                'min:1',
+            ],
+            'package.streetname' => [
+                'required',
+                'string',
+                'min:1',
+            ],
+            'package.housenumber' => [
+                'required',
+                'string',
+                'min:1',
+            ],
+            'package.zipcode' => [
+                'required',
+                'string',
+                'min:1',
+            ],
+            'package.city' => [
+                'required',
+                'string',
+                'min:1',
             ],
         ];
     }
@@ -34,7 +66,11 @@ class CreatePackage extends Component
         $this->validate();
 
         $this->package->status = PackageStatusEnum::REGISTERED;
-        $this->package->user_id = User::select('id')->where('email', $this->package->email)->first();
+        $user = User::select('id')->where('email', $this->package->email)->first();
+
+        if (!is_null($user)) {
+            $this->package->user_id = $user->id;
+        }
         $this->package->pairing_code = (string) Str::uuid();
 
         $this->package->save();

@@ -21,15 +21,15 @@ return new class extends Migration
             $table->string('status');
             /** end ENUM */
 
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->string('pairing_code');
 
             $table->string('email');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('streetname');
-            $table->string('house_number');
-            $table->string('zip_code');
+            $table->string('housenumber');
+            $table->string('zipcode');
             $table->string('city');
         });
     }
