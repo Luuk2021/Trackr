@@ -25,14 +25,12 @@ return new class extends Migration
             $table->string('pairing_code');
 
             $table->string('email');
-            $table->string('firstName');
-            $table->string('lastName');
+            $table->string('firstname');
+            $table->string('lastname');
             $table->string('streetname');
             $table->string('house_number');
             $table->string('zip_code');
             $table->string('city');
-
-
         });
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\User;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -40,6 +40,6 @@ class CreateUser extends Component
 
     public function render()
     {
-        return view('livewire.create-user');
+        return view('livewire.user.create-user');
     }
 }

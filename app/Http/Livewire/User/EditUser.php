@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\User;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -49,6 +49,6 @@ class EditUser extends Component
 
     public function render()
     {
-        return view('livewire.edit-user');
+        return view('livewire.user.edit-user');
     }
 }
