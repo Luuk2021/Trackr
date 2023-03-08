@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\CreateUser;
 use App\Http\Livewire\EditUser;
@@ -36,5 +37,7 @@ Route::middleware('superadmin')->group(function () {
     Route::get('/user/add', CreateUser::class);
     Route::get('/user/edit/{user}', EditUser::class);
 });
+
+Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 
 require __DIR__.'/auth.php';
