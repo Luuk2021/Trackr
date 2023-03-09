@@ -10,6 +10,15 @@
                     Add package
                 </a>
             </div>
+
+            <form wire:submit.prevent="import">
+                <input type="file" wire:model="file">
+
+                @error('file') <span class="error">{{ $message }}</span> @enderror
+
+                <button type="submit">Import</button>
+            </form>
+
         </div>
         <div class="mt-8 flex flex-col">
             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
