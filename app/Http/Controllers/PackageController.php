@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\PackageStatusEnum;
 use App\Models\Package;
 use App\Traits\StorePackage;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PackageController extends Controller
 {
@@ -18,7 +21,7 @@ class PackageController extends Controller
         $errors = $this->StorePackage($package);
 
         if (empty($errors)) {
-            return response()->json($package,201);
+            return response()->json($package, 201);
         } else {
             return response()->json(
                 [
@@ -28,5 +31,22 @@ class PackageController extends Controller
                 400
             );
         };
+    }
+
+    public function update(Request $request, Package $package)
+    {
+        try {
+            $request->validate([
+                'status' => [
+                    'required',
+                    Rule::in(array_column(PackageStatusEnum::cases(), 'value')),
+                ],
+            ]);
+        } catch (Exception $e) {
+            return response()->json($e->getMessage(), 400);
+        }
+
+        $package->status = $request->status;
+        $package->save();
     }
 }
