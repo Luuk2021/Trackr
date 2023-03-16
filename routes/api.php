@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/packages/store', [PackageController::class, 'store']);
-Route::put('/packages/update/{package}', [PackageController::class, 'update']);
+Route::post('/packages/store', [PackageController::class, 'store'])->middleware('auth:sanctum');
+Route::put('/packages/update/{package}', [PackageController::class, 'update'])->middleware('auth:sanctum');
