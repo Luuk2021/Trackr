@@ -74,5 +74,7 @@
     "Edit": "Edit",
     "Delete": "Delete",
     "Role": "Role",
-    "Back": "Back"
+    "Back": "Back",
+    "pagination.previous": "Previous",
+    "pagination.next": "Next"
 }
