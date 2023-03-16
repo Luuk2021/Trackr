@@ -29,6 +29,14 @@ use Illuminate\Support\Facades\Auth; ?>
                     </x-nav-link>
                 </div>
                 <?php endif; ?>
+
+                <?php if (!is_null(Auth::user()) && (Auth::user()->role == 'admin' || Auth::user()->role == 'packer')) : ?>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('package')" :active="request()->routeIs('package')">
+                        {{ __('Packages') }}
+                    </x-nav-link>
+                </div>
+                <?php endif; ?>
             </div>
 
             <!-- Language Dropdown -->

@@ -24,6 +24,11 @@ class User extends Authenticatable
         'role',
     ];
 
+    public function packages()
+    {
+        return $this->hasMany(Package::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

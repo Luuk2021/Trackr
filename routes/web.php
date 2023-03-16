@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Livewire\CreateUser;
-use App\Http\Livewire\EditUser;
-use App\Http\Livewire\ShowUsers;
+use App\Http\Livewire\Package\ShowPackages;
+use App\Http\Livewire\Package\CreatePackage;
+use App\Http\Livewire\User\ShowUsers;
+use App\Http\Livewire\User\CreateUser;
+use App\Http\Livewire\User\EditUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +38,14 @@ Route::middleware('superadmin')->group(function () {
     Route::get('/user', ShowUsers::class)->name('user');
     Route::get('/user/add', CreateUser::class);
     Route::get('/user/edit/{user}', EditUser::class);
+});
+
+Route::middleware('admin')->group(function () {
+    Route::get('/package/add', CreatePackage::class);
+});
+
+Route::middleware('packeroradmin')->group(function () {
+    Route::get('/package', ShowPackages::class)->name('package');
 });
 
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');

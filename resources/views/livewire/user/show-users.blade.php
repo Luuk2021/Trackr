@@ -49,6 +49,7 @@
                                         <a href="/user/edit/{{ $user->id }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
                                         <a href="#" onclick="confirm('Are you sure you want to remove the user') || event.stopImmediatePropagation()" wire:click="delete({{ $user->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
                                     </td>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
