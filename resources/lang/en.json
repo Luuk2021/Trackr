@@ -74,5 +74,16 @@
     "Edit": "Edit",
     "Delete": "Delete",
     "Role": "Role",
-    "Back": "Back"
+    "Back": "Back",
+    "Enter name": "Enter name",
+    "Enter email": "Enter email",
+    "Enter password": "Enter password",
+    "Enter role": "Enter role",
+    "Tokens": "Tokens",
+    "Check and create your tokens": "Check and create your tokens",
+    "Token name": "Token name",
+    "Enter token name": "Enter token name",
+    "Create token": "Create token",
+    "Your new token": "Your new token",
+    "Current tokens": "Current tokens"
 }

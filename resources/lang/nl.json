@@ -77,5 +77,16 @@
     "Edit": "Bewerken",
     "Delete": "Verwijderen",
     "Role": "Rol",
-    "Back": "Terug"
+    "Back": "Terug",
+    "Enter name": "Vul uw naam in",
+    "Enter email": "Vul uw e-mailadres in",
+    "Enter password": "Vul uw wachtwoord in",
+    "Enter role": "Vul uw rol in",
+    "Tokens": "Codes",
+    "Check and create your tokens": "Bekijk en maak uw codes",
+    "Token name": "Code naam",
+    "Enter token name": "Vul de naam voor uw code in",
+    "Create token": "Genereer code",
+    "Your new token": "Uw nieuwe code",
+    "Current tokens": "Huidige codes"
 }
