@@ -85,5 +85,22 @@
     "Enter token name": "Enter token name",
     "Create token": "Create token",
     "Your new token": "Your new token",
-    "Current tokens": "Current tokens"
+    "Current tokens": "Current tokens",
+    "Packages": "Packages",
+    "A list of all the packages": "A list of all the packages",
+    "Add package": "Add package",
+    "User": "User",
+    "Import": "Import"
+    "First name": "First name",
+    "Last name": "Last name",
+    "Street name": "Street name",
+    "House number": "House number",
+    "Zip code": "Zip code",
+    "City": "City",
+    "Enter first name": "Enter first name",
+    "Enter last name": "Enter last name",
+    "Enter street name": "Enter street name",
+    "Enter house number": "Enter house number",
+    "Enter zip code": "Enter zip code",
+    "Enter city": "Enter city"
 }
