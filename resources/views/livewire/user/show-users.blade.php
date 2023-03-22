@@ -15,19 +15,26 @@
             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                     <div class="pb-2">
-                        <input class="text rounded pl-1" wire:model="search" placeholder="{{ __('Search Email') }}..."></input>
+                        <select wire:model="searchColumn">
+                            <option value="id">ID</option>
+                            <option value="name">{{ __('Name') }}</option>
+                            <option value="email">{{ __('Email') }}</option>
+                        </select>
+                    </div>
+                    <div class="pb-2">
+                        <input class="text rounded pl-1" wire:model="search" placeholder="{{ __('Search') }}..."></input>
                     </div>
                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-6">
+                                    <th wire:click="sortBy('id')" scope="col" class="cursor-pointer underline py-3 pl-4 pr-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-6">
                                         ID
                                     </th>
-                                    <th scope="col" class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
+                                    <th wire:click="sortBy('name')" scope="col" class="cursor-pointer underline px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
                                         {{ __('Name') }}
                                     </th>
-                                    <th scope="col" class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
+                                    <th wire:click="sortBy('email')" scope="col" class="cursor-pointer underline px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
                                         {{ __('Email') }}
                                     </th>
                                     <th scope="col" class="relative py-3 pl-3 pr-4 sm:pr-6">

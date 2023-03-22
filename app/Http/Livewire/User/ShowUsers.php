@@ -12,14 +12,26 @@ class ShowUsers extends Component
 
     public $search = '';
 
-    public $sortField;
+    public $sortField = 'id';
 
-    public $sortDirection;
+    public $sortDirection = 'desc';
+
+    public $searchColumn = 'email';
+
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+        $this->sortField = $field;
+    }
 
     public function render()
     {
         return view('livewire.user.show-users', [
-            'users' => User::search('email', $this->search)->paginate(10),
+            'users' => User::search($this->searchColumn, $this->search)->orderBy($this->sortField, $this->sortDirection)->paginate(10),
         ]);
     }
 
