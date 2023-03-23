@@ -104,5 +104,6 @@
     "Enter zip code": "Enter zip code",
     "Enter city": "Enter city",
     "pagination.previous": "Previous",
-    "pagination.next": "Next"
+    "pagination.next": "Next",
+    "Address": "Address"
 }

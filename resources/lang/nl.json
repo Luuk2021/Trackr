@@ -106,5 +106,6 @@
     "Enter zip code": "Vul uw postcode in",
     "Enter city": "Vul uw plaatsnaam in",
     "pagination.previous": "Vorige",
-    "pagination.next": "Volgende"
+    "pagination.next": "Volgende",
+    "Address": "Adres"
 }

@@ -14,10 +14,42 @@ class ShowPackages extends Component
 
     public $file;
 
+    public $searchId = '';
+
+    public $searchLastname = '';
+
+    public $searchStatus = '';
+
+    public $searchStreetname = '';
+
+    public $searchZipcode = '';
+
+    public $searchCity = '';
+
+    public $sortField = 'created_at';
+
+    public $sortDirection = 'desc';
+
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+        $this->sortField = $field;
+    }
+
     public function render()
     {
         return view('livewire.package.show-packages', [
-            'packages' => Package::all()
+            'packages' => Package::search('id', $this->searchId)->
+            search('lastname', $this->searchLastname)->
+            search('status', $this->searchStatus)->
+            search('streetname', $this->searchStreetname)->
+            search('zipcode', $this->searchZipcode)->
+            search('city', $this->searchCity)->
+            orderBy($this->sortField, $this->sortDirection)->paginate(10),
         ]);
     }
 
