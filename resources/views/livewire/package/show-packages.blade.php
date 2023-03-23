@@ -34,6 +34,14 @@
                                     </div>
                                 </th>
                                 <th class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
+                                    <div wire:click="sortBy('email')" scope="col" class="cursor-pointer underline">
+                                        {{ __('Email') }}
+                                    </div>
+                                    <div class="pb-2">
+                                        <input class="text rounded pl-1 border border-grey-400" wire:model="searchEmail" placeholder="{{ __('Search') }}..."></input>
+                                    </div>
+                                </th>
+                                <th class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
                                     <div wire:click="sortBy('status')" scope="col" class="cursor-pointer underline">
                                         {{ __('Status') }}
                                     </div>
@@ -76,6 +84,9 @@
                             <tr>
                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                     {{ $package->lastname . ', ' . $package->firstname }}
+                                </td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                    {{ $package->email }}
                                 </td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                     {{ $package->status }}

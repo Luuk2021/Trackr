@@ -10,13 +10,13 @@ class ShowUsers extends Component
 {
     use WithPagination;
 
-    public $search = '';
+    public $searchEmail = '';
+
+    public $searchName = '';
 
     public $sortField = 'id';
 
     public $sortDirection = 'desc';
-
-    public $searchColumn = 'email';
 
     public function sortBy($field)
     {
@@ -31,7 +31,9 @@ class ShowUsers extends Component
     public function render()
     {
         return view('livewire.user.show-users', [
-            'users' => User::search($this->searchColumn, $this->search)->orderBy($this->sortField, $this->sortDirection)->paginate(10),
+            'users' => User::search('email', $this->searchEmail)->
+            search('name', $this->searchName)->
+            orderBy($this->sortField, $this->sortDirection)->paginate(10),
         ]);
     }
 

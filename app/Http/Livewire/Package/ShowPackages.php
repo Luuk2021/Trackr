@@ -14,7 +14,7 @@ class ShowPackages extends Component
 
     public $file;
 
-    public $searchId = '';
+    public $searchEmail = '';
 
     public $searchLastname = '';
 
@@ -44,6 +44,7 @@ class ShowPackages extends Component
     {
         return view('livewire.package.show-packages', [
             'packages' => Package::search('lastname', $this->searchLastname)->
+            search('email', $this->searchEmail)->
             search('status', $this->searchStatus)->
             search('streetname', $this->searchStreetname)->
             search('zipcode', $this->searchZipcode)->
