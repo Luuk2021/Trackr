@@ -18,19 +18,19 @@ return new class extends Migration
             $table->timestamps();
 
             /** ENUM */
-            $table->string('status');
+            $table->string('status')->fulltext();
             /** end ENUM */
 
             $table->foreignId('user_id')->nullable()->constrained();
             $table->string('pairing_code');
 
-            $table->string('email');
+            $table->string('email')->fulltext();
             $table->string('firstname');
-            $table->string('lastname');
-            $table->string('streetname');
+            $table->string('lastname')->fulltext();
+            $table->string('streetname')->fulltext();
             $table->string('housenumber');
-            $table->string('zipcode');
-            $table->string('city');
+            $table->string('zipcode')->fulltext();
+            $table->string('city')->fulltext();
         });
     }
 

@@ -43,8 +43,7 @@ class ShowPackages extends Component
     public function render()
     {
         return view('livewire.package.show-packages', [
-            'packages' => Package::search('id', $this->searchId)->
-            search('lastname', $this->searchLastname)->
+            'packages' => Package::search('lastname', $this->searchLastname)->
             search('status', $this->searchStatus)->
             search('streetname', $this->searchStreetname)->
             search('zipcode', $this->searchZipcode)->
