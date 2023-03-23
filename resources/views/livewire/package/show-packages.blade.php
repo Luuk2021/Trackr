@@ -2,16 +2,16 @@
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
-                <h1 class="text-xl font-semibold text-gray-900">Packages</h1>
-                <p class="mt-2 text-sm text-gray-700">A list of all the packages.</p>
+                <h1 class="text-xl font-semibold text-gray-900">{{ __('Packages') }}</h1>
+                <p class="mt-2 text-sm text-gray-700">{{ __('A list of all the packages') }}.</p>
             </div>
             <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                 <a href="/package/add" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
-                    Add package
+                    {{ __('Add package') }}
                 </a>
                 <form wire:submit.prevent="import">
                     <input type="file" wire:model="file" >
-                    <button type="submit" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Import</button>
+                    <button type="submit" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">{{ __('Import') }}</button>
                 </form>
             </div>
         </div>
@@ -29,10 +29,10 @@
                                         Status
                                     </th>
                                     <th scope="col" class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
-                                        User
+                                        {{ __('User') }}
                                     </th>
                                     <th scope="col" class="relative py-3 pl-3 pr-4 sm:pr-6">
-                                        <span class="sr-only">Edit</span>
+                                        <span class="sr-only">{{ __('Edit') }}</span>
                                     </th>
                                 </tr>
                             </thead>
@@ -54,8 +54,8 @@
 
 
                                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <a href="/package/edit/{{ $package->id }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                        <a href="#" onclick="confirm('Are you sure you want to remove the package') || event.stopImmediatePropagation()" wire:click="delete({{ $package->id }})" class="text-red-600 hover:text-red-900">Delete</a>
+                                        <a href="/package/edit/{{ $package->id }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
+                                        <a href="#" onclick="confirm('Are you sure you want to remove the package') || event.stopImmediatePropagation()" wire:click="delete({{ $package->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

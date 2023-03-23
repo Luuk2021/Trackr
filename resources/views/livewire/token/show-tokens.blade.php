@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Check and create your tokens.') }}
+            {{ __('Check and create your tokens') }}.
         </p>
     </header>
 
@@ -16,19 +16,20 @@
 
         <form wire:submit.prevent="create">
             <input type="text" wire:model="name"
-                   class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full">
+                   class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
+            placeholder="{{ __('Enter token name') }}...">
             @error('name') <span class="error">{{ $message }}</span> @enderror
             <div class=pt-6>
                 <button type="submit"
                         class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                    Create token
+                    {{ __('Create token') }}
                 </button>
             </div>
         </form>
         @if($token != null)
             <div class="pt-4">
                 <label class="text-red-600">
-                    Your new token:
+                    {{ __('Your new token') }}:
                 </label>
                 <p class="block font-medium text-sm text-gray-700">
                     {{ $token }}
