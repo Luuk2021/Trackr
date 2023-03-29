@@ -21,6 +21,21 @@
             </div>
 
             <div class="mb-6">
+                <label for="shops" class="block mb-2 text-sm font-medium text-gray-900">{{ __('Shops') }}</label>
+                <div class="pb-2">
+                    <input class="text rounded pl-1 border border-grey-400" wire:model="searchName" placeholder="{{ __('Search') }}..."></input>
+                </div>
+                <select wire:model="selectedShopIds" multiple class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    @foreach($allShops as $shop)
+                    <option @if(!$shopsToShow->contains($shop->id)) :
+                        hidden
+                        @endif
+                        value="{{ $shop->id }}">{{ $shop->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-6">
                 <label for="role" class="block mb-2 text-sm font-medium text-gray-900">{{ __('Role') }}</label>
                 <input type="text" wire:model="users.role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Change role..." required="">
                 @error('users.role') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
