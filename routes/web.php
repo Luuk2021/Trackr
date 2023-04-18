@@ -12,6 +12,7 @@ use App\Http\Livewire\Shop\EditShop;
 use App\Http\Livewire\User\ShowUsers;
 use App\Http\Livewire\User\CreateUser;
 use App\Http\Livewire\User\EditUser;
+use App\Http\Livewire\User\ShowUsersAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,7 @@ Route::middleware('superadmin')->group(function () {
 
 Route::middleware('admin')->group(function () {
     Route::get('/package/add', CreatePackage::class);
+    Route::get('/userAdmin', ShowUsersAdmin::class)->name('userAdmin');
 });
 
 Route::middleware('packeroradmin')->group(function () {

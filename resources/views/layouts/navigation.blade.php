@@ -36,6 +36,14 @@
                     </div>
                 <?php endif; ?>
 
+                <?php if (!is_null(Auth::user()) && Auth::user()->role == 'admin') : ?>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('userAdmin')" :active="request()->routeIs('userAdmin')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    </div>
+                <?php endif; ?>
+
                 <?php if (!is_null(Auth::user()) && (Auth::user()->role == 'admin' || Auth::user()->role == 'packer')) : ?>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('package')" :active="request()->routeIs('package')">
