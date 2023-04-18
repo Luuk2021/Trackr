@@ -43,6 +43,14 @@
                         </x-nav-link>
                     </div>
                 <?php endif; ?>
+
+                <?php if (!is_null(Auth::user()) && Auth::user()->role == 'recipient') : ?>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('packageRecipient')" :active="request()->routeIs('packageRecipient')">
+                            {{ __('Packages') }}
+                        </x-nav-link>
+                    </div>
+                <?php endif; ?>
             </div>
 
             <!-- Language Dropdown -->
