@@ -56,4 +56,7 @@ Route::middleware('packeroradmin')->group(function () {
 
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 
+Route::get('/trace', function () {
+    return view('trace');})->name('trace');
+
 require __DIR__.'/auth.php';
