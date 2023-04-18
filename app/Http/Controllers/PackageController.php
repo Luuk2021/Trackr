@@ -7,6 +7,7 @@ use App\Models\Package;
 use App\Traits\StorePackage;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class PackageController extends Controller
@@ -35,6 +36,10 @@ class PackageController extends Controller
 
     public function update(Request $request, Package $package)
     {
+        if (!in_array($package->shop_id, Auth::user()->shops->pluck('id')->toArray())) {
+            return response()->json([], 403);
+        }
+
         try {
             $request->validate([
                 'status' => [

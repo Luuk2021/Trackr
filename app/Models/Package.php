@@ -12,7 +12,7 @@ class Package extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable = ['email', 'firstname', 'lastname', 'streetname', 'housenumber', 'zipcode', 'city'];
+    protected $fillable = ['email', 'firstname', 'lastname', 'streetname', 'housenumber', 'zipcode', 'city', 'shop_id'];
 
     public function user(): BelongsTo
     {
