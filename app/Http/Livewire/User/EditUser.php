@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
@@ -10,6 +11,12 @@ use Illuminate\Validation\Rule;
 class EditUser extends Component
 {
     public User $users;
+
+    public $searchName = '';
+    public $allShops;
+    public $selectedShopIds = [];
+
+    public $alreadyAuthorizedShopIds = [];
 
     public function rules()
     {
@@ -23,6 +30,7 @@ class EditUser extends Component
             ],
             'users.password' => 'string|min:5',
             'users.role' => 'required|in:admin,packer,superadmin',
+            'selectedShopIds' => 'required',
         ];
     }
 
@@ -30,6 +38,11 @@ class EditUser extends Component
     {
         $this->users = User::find($user);
         $this->users->password = '';
+
+        $this->allShops = Shop::all();
+
+        $this->alreadyAuthorizedShopIds = $this->users->shops->pluck('id')->toArray();
+        $this->selectedShopIds = $this->alreadyAuthorizedShopIds;
     }
 
     public function save()
@@ -42,6 +55,12 @@ class EditUser extends Component
             $this->users->password = Hash::make($this->users->password);
         }
 
+        $shopsToRemove = array_diff($this->alreadyAuthorizedShopIds, $this->selectedShopIds);
+        $this->users->shops()->detach($shopsToRemove);
+
+        $shopsToAdd = array_diff($this->selectedShopIds, $this->alreadyAuthorizedShopIds);
+        $this->users->shops()->attach($shopsToAdd);
+
         $this->users->save();
 
         return redirect()->to('/user');;
@@ -49,6 +68,9 @@ class EditUser extends Component
 
     public function render()
     {
-        return view('livewire.user.edit-user');
+        return view(
+            'livewire.user.edit-user',
+            ['shopsToShow' => Shop::search('name', $this->searchName)->get('id')]
+        );
     }
 }

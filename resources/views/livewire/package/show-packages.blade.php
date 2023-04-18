@@ -42,6 +42,14 @@
                                     </div>
                                 </th>
                                 <th class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
+                                    <div wire:click="sortBy('shops.name')" scope="col" class="cursor-pointer underline">
+                                        {{ __('Shop') }}
+                                    </div>
+                                    <div class="pb-2">
+                                        <input class="text rounded pl-1 border border-grey-400" wire:model="searchShopname" placeholder="{{ __('Search') }}..."></input>
+                                    </div>
+                                </th>
+                                <th class="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500">
                                     <div wire:click="sortBy('status')" scope="col" class="cursor-pointer underline">
                                         {{ __('Status') }}
                                     </div>
@@ -87,6 +95,9 @@
                                 </td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                     {{ $package->email }}
+                                </td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                    {{ $package->shop->name }}
                                 </td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                     {{ $package->status }}

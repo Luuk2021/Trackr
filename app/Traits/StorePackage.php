@@ -4,8 +4,10 @@ namespace App\Traits;
 
 use App\Enum\PackageStatusEnum;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 trait StorePackage
 {
@@ -46,6 +48,11 @@ trait StorePackage
                 'required',
                 'string',
                 'min:1',
+            ],
+            'package.shop_id' => [
+                'required',
+                'integer',
+                Rule::in(Auth::user()->shops->pluck('id')),
             ],
         ];
     }

@@ -4,6 +4,9 @@ use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Package\ShowPackages;
 use App\Http\Livewire\Package\CreatePackage;
+use App\Http\Livewire\Shop\ShowShops;
+use App\Http\Livewire\Shop\CreateShop;
+use App\Http\Livewire\Shop\EditShop;
 use App\Http\Livewire\User\ShowUsers;
 use App\Http\Livewire\User\CreateUser;
 use App\Http\Livewire\User\EditUser;
@@ -38,6 +41,9 @@ Route::middleware('superadmin')->group(function () {
     Route::get('/user', ShowUsers::class)->name('user');
     Route::get('/user/add', CreateUser::class);
     Route::get('/user/edit/{user}', EditUser::class);
+    Route::get('/shop', ShowShops::class)->name('shop');
+    Route::get('/shop/add', CreateShop::class);
+    Route::get('/shop/edit/{shop}', EditShop::class);
 });
 
 Route::middleware('admin')->group(function () {
