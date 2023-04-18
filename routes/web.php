@@ -3,6 +3,7 @@
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Package\ShowPackages;
+use App\Http\Livewire\Package\ShowPackagesRecipient;
 use App\Http\Livewire\Package\CreatePackage;
 use App\Http\Livewire\Shop\ShowShops;
 use App\Http\Livewire\Shop\CreateShop;
@@ -52,6 +53,10 @@ Route::middleware('admin')->group(function () {
 
 Route::middleware('packeroradmin')->group(function () {
     Route::get('/package', ShowPackages::class)->name('package');
+});
+
+Route::middleware('recipient')->group(function () {
+    Route::get('/packageRecipient', ShowPackagesRecipient::class)->name('packageRecipient');
 });
 
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
