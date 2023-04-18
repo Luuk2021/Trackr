@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TraceController;
 use App\Http\Livewire\Package\ShowPackages;
 use App\Http\Livewire\Package\ShowPackagesRecipient;
 use App\Http\Livewire\Package\CreatePackage;
@@ -62,6 +63,10 @@ Route::middleware('recipient')->group(function () {
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 
 Route::get('/trace', function () {
-    return view('trace');})->name('trace');
+    $status = null;
+    return view('trace', compact('status'));
+})->name('trace');
 
-require __DIR__.'/auth.php';
+Route::get('/search', [TraceController::class, 'search'])->name("search");
+
+require __DIR__ . '/auth.php';
