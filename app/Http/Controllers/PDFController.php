@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\PackageStatusEnum;
 use App\Models\Package;
+use App\Http\Controllers\PackageController;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -25,6 +27,11 @@ class PDFController extends Controller
         ];
 
         $pdf = PDF::loadView('myPDF', $data);
+
+        if ($package->status == PackageStatusEnum::REGISTERED) {
+            $package->status = PackageStatusEnum::PRINTED;
+            $package->save();
+        }
         return $pdf->download('trackr_label_' . $package->id . '.pdf');
     }
 }
