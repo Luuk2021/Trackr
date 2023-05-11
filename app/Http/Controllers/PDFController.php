@@ -17,13 +17,10 @@ class PDFController extends Controller
      */
     public function generatePDF(Request $request, $id)
     {
-//        dd($request);
         $package = Package::find($id);
 
         $data = [
-            'title' => 'Welcome to Trackr',
-            'date' => date('d/m/Y'),
-            'package' => $package
+            'packages' => [$package]
         ];
 
         $pdf = PDF::loadView('myPDF', $data);

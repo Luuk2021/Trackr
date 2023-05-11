@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire\Package;
 
+use App\Enum\PackageStatusEnum;
 use App\Models\Package;
 use App\Traits\StorePackage;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -33,6 +36,8 @@ class ShowPackages extends Component
     public $sortField = 'shops.name';
 
     public $sortDirection = 'asc';
+
+    public $selectedPackages = [];
 
     public function sortBy($field)
     {
@@ -99,6 +104,24 @@ class ShowPackages extends Component
 
             $errors = $this->StorePackage($package);
         }
+    }
+
+    public function generatePDF($id)
+    {
+        dd($id);
+        $package = Package::find($id);
+
+        $data = [
+            'packages' => [$package]
+        ];
+
+        $pdf = PDF::loadView('myPDF', $data);
+
+        if ($package->status == PackageStatusEnum::REGISTERED) {
+            $package->status = PackageStatusEnum::PRINTED;
+            $package->save();
+        }
+        return $pdf->download('trackr_label_' . $package->id . '.pdf');
     }
 
     public function delete(Package $package)
