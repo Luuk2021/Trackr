@@ -13,9 +13,10 @@ class PDFController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function generatePDF()
+    public function generatePDF(Request $request, $id)
     {
-        $package = Package::find(1);
+//        dd($request);
+        $package = Package::find($id);
 
         $data = [
             'title' => 'Welcome to Trackr',
@@ -24,7 +25,6 @@ class PDFController extends Controller
         ];
 
         $pdf = PDF::loadView('myPDF', $data);
-//        dd($pdf);
         return $pdf->download('trackr_label_' . $package->id . '.pdf');
     }
 }

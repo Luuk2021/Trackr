@@ -72,6 +72,6 @@ Route::get('/trace', function () {
 
 Route::get('/search', [TraceController::class, 'search'])->name("search");
 
-Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+Route::get('generate-pdf/{id}', [PDFController::class, 'generatePDF'])->name('generate-pdf');;
 
 require __DIR__ . '/auth.php';

@@ -112,6 +112,9 @@
                                 </td>
 
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                    <a href="{{ route('generate-pdf', $package->id) }}">
+                                        <button type="submit" class="text-indigo-600 hover:text-indigo-900">{{ __('Download') }}</button>
+                                    </a>
                                     <a href="#" onclick="confirm('Are you sure you want to remove the package') || event.stopImmediatePropagation()" wire:click="delete({{ $package->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
                                 </td>
                             </tr>
