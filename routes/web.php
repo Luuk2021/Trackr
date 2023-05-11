@@ -14,6 +14,7 @@ use App\Http\Livewire\User\CreateUser;
 use App\Http\Livewire\User\EditUser;
 use App\Http\Livewire\User\ShowUsersAdmin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,5 +71,7 @@ Route::get('/trace', function () {
 })->name('trace');
 
 Route::get('/search', [TraceController::class, 'search'])->name("search");
+
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 
 require __DIR__ . '/auth.php';
