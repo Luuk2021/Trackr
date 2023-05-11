@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Validation\Rules\File;
+use Livewire\WithPagination;
 
 class ShowPackages extends Component
 {
-    use WithFileUploads, StorePackage;
+    use WithFileUploads, StorePackage, WithPagination;
 
     public $file;
 

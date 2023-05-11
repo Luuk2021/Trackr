@@ -5,9 +5,11 @@ namespace App\Http\Livewire\Package;
 use App\Models\Package;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ShowPackagesRecipient extends Component
 {
+    use WithPagination;
     public $searchEmail = '';
 
     public $searchShopname = '';

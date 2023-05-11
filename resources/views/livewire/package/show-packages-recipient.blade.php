@@ -103,6 +103,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="bg-gray-50 pl-3 pr-3 pb-1 pt-1 border-t-[1px] border-gray-300">
+                        {{ $packages->links() }}
+                    </div>
                 </div>
             </div>
         </div>
