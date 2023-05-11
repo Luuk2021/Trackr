@@ -82,7 +82,6 @@
                                     </div>
                                 </th>
                                 <th scope="col" class="relative py-3 pl-3 pr-4 sm:pr-6">
-                                    <span class="sr-only">{{ __('Edit') }}</span>
                                 </th>
                             </tr>
                         </thead>
@@ -113,13 +112,15 @@
                                 </td>
 
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <a href="/package/edit/{{ $package->id }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
                                     <a href="#" onclick="confirm('Are you sure you want to remove the package') || event.stopImmediatePropagation()" wire:click="delete({{ $package->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="bg-gray-50 pl-3 pr-3 pb-1 pt-1 border-t-[1px] border-gray-300">
+                        {{ $packages->links() }}
+                    </div>
                 </div>
             </div>
         </div>

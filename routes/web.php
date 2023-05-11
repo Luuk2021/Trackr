@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TraceController;
 use App\Http\Livewire\Package\ShowPackages;
 use App\Http\Livewire\Package\ShowPackagesRecipient;
 use App\Http\Livewire\Package\CreatePackage;
@@ -11,6 +12,7 @@ use App\Http\Livewire\Shop\EditShop;
 use App\Http\Livewire\User\ShowUsers;
 use App\Http\Livewire\User\CreateUser;
 use App\Http\Livewire\User\EditUser;
+use App\Http\Livewire\User\ShowUsersAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +51,7 @@ Route::middleware('superadmin')->group(function () {
 
 Route::middleware('admin')->group(function () {
     Route::get('/package/add', CreatePackage::class);
+    Route::get('/userAdmin', ShowUsersAdmin::class)->name('userAdmin');
 });
 
 Route::middleware('packeroradmin')->group(function () {
@@ -61,4 +64,11 @@ Route::middleware('recipient')->group(function () {
 
 Route::get('lang/change', [LangController::class, 'change'])->name('changeLang');
 
-require __DIR__.'/auth.php';
+Route::get('/trace', function () {
+    $status = null;
+    return view('trace', compact('status'));
+})->name('trace');
+
+Route::get('/search', [TraceController::class, 'search'])->name("search");
+
+require __DIR__ . '/auth.php';

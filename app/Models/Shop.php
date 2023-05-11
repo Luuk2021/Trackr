@@ -19,11 +19,6 @@ class Shop extends Model
         return $this->hasMany(Package::class);
     }
 
-    public function recipients(): HasManyThrough
-    {
-        return $this->hasManyThrough(User::class, Package::class);
-    }
-
     public function users(): HasMany
     {
         return $this->hasMany(User::class);
