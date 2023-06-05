@@ -6,7 +6,6 @@ use App\Enum\PackageStatusEnum;
 use App\Models\Package;
 use App\Traits\StorePackage;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -52,17 +51,7 @@ class ShowPackages extends Component
     public function render()
     {
         return view('livewire.package.show-packages', [
-            'packages' => Package::select('packages.*', 'shops.name')->
-            join('shops', 'shops.id', '=', 'packages.shop_id')->
-            whereIn('shops.id', Auth::user()->shops->pluck('id'))->
-            search('packages.lastname', $this->searchLastname)->
-            search('packages.email', $this->searchEmail)->
-            search('packages.status', $this->searchStatus)->
-            search('packages.streetname', $this->searchStreetname)->
-            search('packages.zipcode', $this->searchZipcode)->
-            search('packages.city', $this->searchCity)->
-            search('shops.name', $this->searchShopname)->
-            orderBy($this->sortField, $this->sortDirection)->paginate(10),
+            'packages' => Package::select('packages.*', 'shops.name')->join('shops', 'shops.id', '=', 'packages.shop_id')->whereIn('shops.id', Auth::user()->shops->pluck('id'))->search('packages.lastname', $this->searchLastname)->search('packages.email', $this->searchEmail)->search('packages.status', $this->searchStatus)->search('packages.streetname', $this->searchStreetname)->search('packages.zipcode', $this->searchZipcode)->search('packages.city', $this->searchCity)->search('shops.name', $this->searchShopname)->orderBy($this->sortField, $this->sortDirection)->paginate(10),
         ]);
     }
 
@@ -108,20 +97,27 @@ class ShowPackages extends Component
 
     public function generatePDF($id)
     {
-        dd($id);
-        $package = Package::find($id);
+        $packages = Package::find($id);
 
         $data = [
-            'packages' => [$package]
+            'packages' => $packages
         ];
 
-        $pdf = PDF::loadView('myPDF', $data);
-
-        if ($package->status == PackageStatusEnum::REGISTERED) {
-            $package->status = PackageStatusEnum::PRINTED;
-            $package->save();
+        $pdf = PDF::loadView('myPDF', $data)->output();
+        foreach ($packages as $package) {  
+            if ($package->status == PackageStatusEnum::REGISTERED) {
+                $package->status = PackageStatusEnum::PRINTED;
+                $package->save();
+            }
         }
-        return $pdf->download('trackr_label_' . $package->id . '.pdf');
+        return response()->streamDownload(fn () => print($pdf), 'trackr_labels.pdf');
+    }
+
+    public function generateSelectedPDFs()
+    {
+        $download = $this->generatePDF($this->selectedPackages);
+        $this->selectedPackages = [];
+        return $download;
     }
 
     public function delete(Package $package)

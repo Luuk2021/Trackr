@@ -29,9 +29,6 @@
     </style>
 </head>
 @foreach($packages as $package)
-    @if($packages[0] != $package)
-        <div class="page-break"></div>
-    @endif
     <body style="display: flex;flex-direction: column;height: 90%;box-sizing: border-box;padding: 40px">
     <div style="display: flex;justify-content: space-between">
         <div>
