@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -25,10 +26,66 @@ class DatabaseSeeder extends Seeder
          ]);
 
         \App\Models\User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@trackr.com',
+            'name' => 'BolAdmin',
+            'email' => 'bol.admin@trackr.com',
             'password' => Hash::make('trackr'),
             'role' => 'admin',
+        ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'Tim',
+            'email' => 'tim@trackr.com',
+            'password' => Hash::make('trackr'),
+            'role' => 'packer',
+        ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'Luuk',
+            'email' => 'luuk@trackr.com',
+            'password' => Hash::make('trackr'),
+            'role' => 'recipient',
+        ]);
+
+        \App\Models\Shop::factory()->create([
+            'name' => 'Bol.com',
+            'streetname' => 'Papendorpseweg',
+            'housenumber' => '100',
+            'zipcode' => '3528BJ',
+            'city' => 'Utrecht',
+        ]);
+
+        \App\Models\Shop::factory()->create([
+            'name' => 'Wehkamp',
+            'streetname' => 'Burgemeester Roelenweg',
+            'housenumber' => '13',
+            'zipcode' => '8021EV',
+            'city' => 'Zwolle',
+        ]);
+
+        \App\Models\Shop::factory()->create([
+            'name' => 'Coolblue',
+            'streetname' => 'Aalsterweg',
+            'housenumber' => '91',
+            'zipcode' => '5615CC',
+            'city' => 'Eindhoven',
+        ]);
+
+        DB::table('shop_user')->insert(
+            [
+                'user_id' => '2',
+                'shop_id' => '1',
+            ]
+        );
+
+        \App\Models\Package::factory()->create([
+            'email' => 'joost@hotmail.com',
+            'firstname' => 'Joost',
+            'lastname' => 'Sijm',
+            'streetname' => 'Wormstraat',
+            'housenumber' => '73',
+            'zipcode' => '1337BH',
+            'city' => 'Wervershoof',
+            'shop_id' => '1',
         ]);
     }
 }
