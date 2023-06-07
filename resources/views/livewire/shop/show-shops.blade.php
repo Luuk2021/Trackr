@@ -40,7 +40,7 @@
                                     </td>
                                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                         <a id="edit" href="/shop/edit/{{ $shop->id }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
-                                        <a href="#" onclick="confirm('Are you sure you want to remove the shop') || event.stopImmediatePropagation()" wire:click="delete({{ $shop->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
+                                        <a id="delete" href="#" onclick="confirm('Are you sure you want to remove the shop') || event.stopImmediatePropagation()" wire:click="delete({{ $shop->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

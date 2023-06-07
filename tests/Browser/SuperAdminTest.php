@@ -79,7 +79,7 @@ class SuperAdminTest extends DuskTestCase
             $browser->acceptDialog();
 
             $browser->waitForLocation('/user')
-                ->pause(100)
+                ->pause(1000)
                 ->assertDontSee('dusktestuser@trackr.com');
         });
     }
@@ -123,6 +123,25 @@ class SuperAdminTest extends DuskTestCase
                 ->press('@save')
                 ->waitForLocation('/shop')
                 ->assertSee('dusktestshop123');
+        });
+    }
+
+    public function testSuperAdminCanDeleteShop(): void
+    {
+        $this->browse(function ($browser) {
+
+            $browser->loginAs(User::find(1))
+                ->visit('/shop')
+                ->with('#table', function ($table) {
+                    $table->assertSee('dusktestshop123')
+                        ->click('#delete');
+                });
+
+            $browser->acceptDialog();
+
+            $browser->waitForLocation('/shop')
+                ->pause(1000)
+                ->assertDontSee('dusktestshop123');
         });
     }
 }
