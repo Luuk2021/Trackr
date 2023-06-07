@@ -9,13 +9,15 @@ use Tests\DuskTestCase;
 
 class LoginTest extends DuskTestCase
 {
-    use DatabaseMigrations;
     /**
      * A Dusk test example.
      */
 
     public function testExample(): void
     {
+        $this->artisan('db:wipe');
+        $this->artisan('migrate');
+        $this->artisan('db:seed');
         /**
          * A basic browser test example.
          *
