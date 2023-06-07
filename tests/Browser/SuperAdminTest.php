@@ -104,4 +104,25 @@ class SuperAdminTest extends DuskTestCase
                 ->assertSee('dusktestshop');
         });
     }
+
+    public function testSuperAdminCanEditShop(): void
+    {
+        $this->browse(function ($browser) {
+
+            $browser->loginAs(User::find(1))
+                ->visit('/shop')
+                ->with('#table', function ($table) {
+                    $table->assertSee('dusktestshop')
+                        ->click('#edit');
+                });
+
+            $browser->pause(1000)
+                ->assertSee('Save')
+                ->type('@name', 'dusktestshop123')
+                ->pause(1000)
+                ->press('@save')
+                ->waitForLocation('/shop')
+                ->assertSee('dusktestshop123');
+        });
+    }
 }

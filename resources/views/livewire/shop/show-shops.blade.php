@@ -15,7 +15,7 @@
             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                     <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-300">
+                        <table id="table" class="min-w-full divide-y divide-gray-300">
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th class="py-3 pl-4 pr-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-6">
@@ -39,7 +39,7 @@
                                         {{ $shop->name }}
                                     </td>
                                     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                        <a href="/shop/edit/{{ $shop->id }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
+                                        <a id="edit" href="/shop/edit/{{ $shop->id }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
                                         <a href="#" onclick="confirm('Are you sure you want to remove the shop') || event.stopImmediatePropagation()" wire:click="delete({{ $shop->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
                                     </td>
                                 </tr>
