@@ -90,7 +90,7 @@
                     </a>
                 </div>
             </div>
-            <x-primary-button class="ml-3">
+            <x-primary-button class="ml-3" dusk="login-button">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
