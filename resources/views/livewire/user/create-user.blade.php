@@ -4,7 +4,7 @@
 
             <div class="mb-6">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">{{ __('Name') }}</label>
-                <input type="text" wire:model="users.name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="{{ __('Enter name') }}..." required="">
+                <input dusk="name" type="text" wire:model="users.name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="{{ __('Enter name') }}..." required="">
                 @error('users.name') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
             </div>
 
@@ -16,7 +16,7 @@
 
             <div class="mb-6">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">{{ __('Password') }}</label>
-                <input type="password" wire:model="users.password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="{{ __('Enter password') }}..." required="">
+                <input dusk="password" type="password" wire:model="users.password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="{{ __('Enter password') }}..." required="">
                 @error('users.password') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
             </div>
 
@@ -37,7 +37,7 @@
 
             <div class="mb-6">
                 <label for="role" class="block mb-2 text-sm font-medium text-gray-900">{{ __('Role') }}</label>
-                <input type="text" wire:model="users.role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="{{ __('Enter role') }}..." required="">
+                <input dusk="role" type="text" wire:model="users.role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="{{ __('Enter role') }}..." required="">
                 @error('users.role') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
             </div>
 
