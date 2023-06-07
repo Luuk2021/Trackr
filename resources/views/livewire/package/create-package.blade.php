@@ -49,7 +49,7 @@
                 <div class="pb-2">
                     <input class="text rounded pl-1 border border-grey-400" wire:model="searchName" placeholder="{{ __('Search') }}..."></input>
                 </div>
-                <select dusk="select-shop" wire:model="package.shop_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <select dusk="select-shop" wire:model="shop_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     @foreach($allShops as $shop)
                     <option @if(!$shopsToShow->contains($shop->id)) :
                         hidden
