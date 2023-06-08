@@ -16,15 +16,19 @@ class CreatePackage extends Component
 
     public $searchName = '';
     public $allShops;
+    public $shop_id;
 
     public function mount()
     {
         $this->package = new Package();
         $this->allShops = Auth::user()->shops;
+        $shop = reset($this->allShops)[0];
+        $this->shop_id = $shop->id;
     }
 
     public function save()
     {
+        $this->package->shop_id = $this->shop_id;
         $this->validate();
         $this->StorePackage($this->package);
         return redirect()->to('/package');

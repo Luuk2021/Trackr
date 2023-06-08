@@ -7,14 +7,14 @@
                     <p class="mt-2 text-sm text-gray-700">{{ __('A list of all the packages') }}.</p>
                 </div>
                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                    <a href="/package/add" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                    <a id="add-package" href="/package/add" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
                         {{ __('Add package') }}
                     </a>
                     <form wire:submit.prevent="import">
-                        <input type="file" wire:model="file">
-                        <button type="submit" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">{{ __('Import') }}</button>
+                        <input id="file" type="file" wire:model="file">
+                        <button dusk="import" type="submit" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">{{ __('Import') }}</button>
                     </form>
-                    <a href="#" wire:click="generateSelectedPDFs()" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">{{ __('Download Selected') }}</a>
+                    <a id="download-bulk" href="#" wire:click="generateSelectedPDFs()" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">{{ __('Download Selected') }}</a>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                 <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-300">
+                    <table id="table" class="min-w-full divide-y divide-gray-300">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="py-3 pl-4 pr-3 text-left text-xs font-medium uppercase tracking-wide text-gray-500 sm:pl-6">
@@ -113,9 +113,9 @@
                                 </td>
 
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <input type="checkbox" wire:model="selectedPackages" value="{{ $package->id }}">
-                                    <a href="#" wire:click="generatePDF([{{ $package->id }}])" class="text-indigo-600 hover:text-indigo-900">{{ __('Download') }}</a>
-                                    <a href="#" onclick="confirm('Are you sure you want to remove the package') || event.stopImmediatePropagation()" wire:click="delete({{ $package->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
+                                    <input id="checkbox{{ $package->id }}" type="checkbox" wire:model="selectedPackages" value="{{ $package->id }}">
+                                    <a id="download" href="#" wire:click="generatePDF([{{ $package->id }}])" class="text-indigo-600 hover:text-indigo-900">{{ __('Download') }}</a>
+                                    <a id="delete" href="#" onclick="confirm('Are you sure you want to remove the package') || event.stopImmediatePropagation()" wire:click="delete({{ $package->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
                                 </td>
                             </tr>
                             @endforeach

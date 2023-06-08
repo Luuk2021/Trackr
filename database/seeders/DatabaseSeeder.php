@@ -87,5 +87,17 @@ class DatabaseSeeder extends Seeder
             'city' => 'Wervershoof',
             'shop_id' => '1',
         ]);
+
+        \App\Models\Package::factory()->create([
+            'email' => 'luuk@trackr.com',
+            'firstname' => 'Luuk',
+            'lastname' => 'Geurten',
+            'streetname' => 'Pierlaan',
+            'housenumber' => '21',
+            'zipcode' => '4683JF',
+            'city' => 'Ede',
+            'shop_id' => '1',
+            'pairing_code' => '2b7b2527-b372-46aa-a79f-a61d0b5889a8',
+        ]);
     }
 }
