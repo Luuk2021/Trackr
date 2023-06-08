@@ -31,7 +31,7 @@ class AdminTest extends DuskTestCase
         $this->browse(function ($browser) {
             $browser->loginAs(User::find(2))
                 ->visit('/package')
-                ->assertDontSee('luuk@trackr.com')
+                ->assertDontSee('testsstreet')
                 ->click('#add-package')
                 ->type('@email', 'luuk@trackr.com')
                 ->type('@firstname', 'luuk')
@@ -47,7 +47,7 @@ class AdminTest extends DuskTestCase
                 ->pause(1000)
                 ->press('@save')
                 ->waitForLocation('/package')
-                ->assertSee('luuk@trackr.com');
+                ->assertSee('testsstreet');
 
             $browser->visit('/userAdmin')
                 ->assertSee('luuk@trackr.com');
