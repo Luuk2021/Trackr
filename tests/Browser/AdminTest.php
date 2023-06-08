@@ -53,4 +53,15 @@ class AdminTest extends DuskTestCase
                 ->assertSee('luuk@trackr.com');
         });
     }
+
+    public function testAdminCanAddBulk(): void
+    {
+        $this->browse(function ($browser) {
+            $browser->loginAs(User::find(2))
+                ->visit('/package')
+                ->assertDontSee('luuk@trackr.com')
+                ->attach('#file', 'C:\Users\Luuk\Desktop\trackrman.csv')
+                ->screenshot('1');
+        });
+    }
 }
