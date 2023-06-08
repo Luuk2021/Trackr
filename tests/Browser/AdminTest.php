@@ -59,9 +59,66 @@ class AdminTest extends DuskTestCase
         $this->browse(function ($browser) {
             $browser->loginAs(User::find(2))
                 ->visit('/package')
-                ->assertDontSee('luuk@trackr.com')
-                ->attach('#file', 'C:\Users\Luuk\Desktop\trackrman.csv')
-                ->screenshot('1');
+                ->attach('#file', '.\tests\TestingFiles\trackrtest.csv')
+                ->pause('2000')
+                ->click('@import')
+                ->pause('2000')
+                ->assertSee('joop@gmail.com')
+                ->assertSee('kaas@kaas.com')
+                ->assertSee('nietfokke_69@hotmail.com')
+                ->assertSee('kaaswastaken@kaas.com')
+                ->assertSee('keesmail@student.avans.nl')
+                ->assertSee('klant@klant.com');
+        });
+    }
+
+    public function testAdminCanDeletePackage(): void
+    {
+        $this->browse(function ($browser) {
+
+            $browser->loginAs(User::find(2))
+                ->visit('/package')
+                ->with('#table', function ($table) {
+                    $table->assertSee('joost@hotmail.com')
+                        ->click('#delete');
+                });
+
+            $browser->acceptDialog()
+                ->waitForLocation('/package')
+                ->pause(2000)
+                ->assertDontSee('joost@hotmail.com');
+        });
+    }
+
+    public function testAdminCanDownload(): void
+    {
+        $this->browse(function ($browser) {
+
+            $browser->loginAs(User::find(2))
+                ->visit('/package')
+                ->with('#table', function ($table) {
+                    $table->assertSee('luuk@trackr.com')
+                        ->click('#download');
+                });
+        });
+    }
+
+    public function testAdminCanDownloadBulk(): void
+    {
+        $this->browse(function ($browser) {
+            $browser->loginAs(User::find(2))
+                ->visit('/package')
+                ->check('#checkbox3')
+                ->pause(1000)
+                ->check('#checkbox4')
+                ->pause(1000)
+                ->check('#checkbox5')
+                ->pause(1000)
+                ->assertChecked('#checkbox3')
+                ->assertChecked('#checkbox4')
+                ->assertChecked('#checkbox5')
+                ->click('#download-bulk')
+                ->pause(2000);
         });
     }
 }
