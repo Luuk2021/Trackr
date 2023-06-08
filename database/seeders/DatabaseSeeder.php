@@ -89,9 +89,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Package::factory()->create([
-            'email' => 'sjoerd@trackr.com',
-            'firstname' => 'Sjoerd',
-            'lastname' => 'Janssen',
+            'email' => 'luuk@trackr.com',
+            'firstname' => 'Luuk',
+            'lastname' => 'Geurten',
             'streetname' => 'Pierlaan',
             'housenumber' => '21',
             'zipcode' => '4683JF',
