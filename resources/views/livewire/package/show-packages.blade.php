@@ -113,7 +113,7 @@
                                 </td>
 
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                    <input type="checkbox" wire:model="selectedPackages" value="{{ $package->id }}">
+                                    <input id="checkbox" type="checkbox" wire:model="selectedPackages" value="{{ $package->id }}">
                                     <a id="download" href="#" wire:click="generatePDF([{{ $package->id }}])" class="text-indigo-600 hover:text-indigo-900">{{ __('Download') }}</a>
                                     <a id="delete" href="#" onclick="confirm('Are you sure you want to remove the package') || event.stopImmediatePropagation()" wire:click="delete({{ $package->id }})" class="text-red-600 hover:text-red-900">{{ __('Delete') }}</a>
                                 </td>
