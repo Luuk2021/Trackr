@@ -33,7 +33,6 @@ class AdminTest extends DuskTestCase
                 ->visit('/package')
                 ->assertDontSee('luuk@trackr.com')
                 ->click('#add-package')
-                ->screenshot('1')
                 ->type('@email', 'luuk@trackr.com')
                 ->type('@firstname', 'luuk')
                 ->type('@lastname', 'geurten')
