@@ -1,0 +1,24 @@
+POST http://127.0.0.1:8000/api/packages/store
+content-type: application/json
+Authorization: Bearer 2|cs1ZdcOZ0fzoR6M1kAN40diOKvTvMCmpbG5lowvH
+
+{
+        "email" : "admin@trackr.com",
+        "firstname" : "kaas",
+        "lastname" : "baas",
+        "streetname" : "kaasweggetje",
+        "housenumber" : "12k",
+        "zipcode" : "1234ka",
+        "city" : "kaasdorp",
+        "shop_id": "2"
+}
+
+###
+
+PUT http://127.0.0.1:8000/api/packages/update/3
+content-type: application/json
+Authorization: Bearer 1|deXfpfKv89mGphLgEp744mnYCGaZjVAKAk1DafkQ
+
+{
+        "status" : "on_the_way"
+}
